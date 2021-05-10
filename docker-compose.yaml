@@ -1,0 +1,19 @@
+version: "3"
+services:
+    valheim-server:
+        image: wrightcameron/valheim-server
+        environment:
+            - SERVER_NAME=My server
+            - SERVER_PASSWORD=secret
+            - SERVER_PORT=2456
+            - SERVER_WORLD=Dedicated
+        volumes:
+            - valheim_server:/home/steam/valheim
+            - /opt/valheimd/data:/root/.config/unity3d/IronGate/Valheim
+        ports:
+            - 2456-2457:2456-2457/udp
+        restart: unless-stopped
+        stop_grace_period: 2m
+
+volumes: 
+    valheim_server: ~

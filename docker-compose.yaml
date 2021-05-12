@@ -8,8 +8,8 @@ services:
             - SERVER_PORT=2456
             - SERVER_WORLD=Dedicated
         volumes:
-            - valheim_server:/home/steam/valheim
-            - /opt/valheimd/data:/root/.config/unity3d/IronGate/Valheim
+            - valheim_server:/home/steam/valheim/valheimServer
+            - valheim_data:/steam/.config/unity3d/IronGate/Valheim
         ports:
             - 2456-2457:2456-2457/udp
         restart: unless-stopped
@@ -17,3 +17,4 @@ services:
 
 volumes: 
     valheim_server: ~
+    valheim_data: ~

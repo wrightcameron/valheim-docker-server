@@ -27,7 +27,7 @@ Server uses two volumes. The server files use a docker volume while the persista
 
 The server files mount is optional, but if the server is expected to be started and stopped serveral times, this volume will insure that Steam CMD doesn't constantly have to redownload Valheim every single time the container starts up.
 
-### Permissions
+### Security
 
 ## Usage
 
@@ -44,7 +44,7 @@ docker run -it --rm \
     --env SERVER_WORLD=Dedicated \
     -p 2456-2457:2456-2457/udp \
     --volume=valheim_server:/home/steam/valheim/valheimServer \
-    --volume=/opt/valheim/data:/root/.config/unity3d/IronGate/Valheim \
+    --volume=/opt/valheim/data:/steam/.config/unity3d/IronGate/Valheim \
     -d wrightcameron/valheim-server
 ```
 

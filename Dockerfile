@@ -6,8 +6,10 @@ ENV STEAMAPPDIR "${HOMEDIR}/${STEAMAPP}"
 
 WORKDIR $STEAMAPPDIR
 COPY ./start_valheim.sh .
-RUN mkdir "${STEAMAPPDIR}/valheimServer"
+RUN mkdir -p ${STEAMAPPDIR}/valheimServer ${HOMEDIR}/.config/unity3d/IronGate/Valheim
 RUN chmod +x "${STEAMAPPDIR}/start_valheim.sh" \
-    && chown -R "${USER}:${USER}" "${STEAMAPPDIR}/start_valheim.sh" "${STEAMAPPDIR}"
+    && chown -R "steam:steam" "${STEAMAPPDIR}/start_valheim.sh" "${STEAMAPPDIR}" \
+        "${HOMEDIR}/.config"
 
+USER steam
 CMD ["./start_valheim.sh"]

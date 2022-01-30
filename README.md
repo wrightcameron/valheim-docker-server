@@ -1,10 +1,10 @@
 # Valheim Docker Server
 
-Dedicated server for [Valheim](https://store.steampowered.com/app/892970/Valheim/).
+Dedicated server for [Valheim](https://store.steampowered.com/app/892970/Valheim/), with [Valheim Plus](https://valheim.plus/).
 
 ## About
 
-Dedicated Docker image for video game Valheim.  No mods are included with image.  This image is self contained, with everything needed to standup a Valheim headless dedicated server.
+Dedicated Docker image for video game Valheim.  Valheim Plus is added for additional server configeratin, so players will need to download Valheim Plus client.  This image is self contained, with everything needed to standup a Valheim headless dedicated server.
 
 The base image this was built upon is a docker image containing just the steam CMD.  Resulting in a very minimal amount of code needed to setup Valheim.
 
@@ -27,13 +27,9 @@ SERVER_WORLD    | Valheim        | The name of the world file (e.g. Valheim.fwl 
 
 The network port is set in the Docker compose file or in the Docker command from CMI.  The default port range is 2456-2457 udp.  If standing up multiple Valheim servers, change the ports (along with map used).
 
-## Volumes
+## Volume
 
-Server uses two volumes. The server files use a docker volume while the persistant data like admins, bans, map are a bind mount.
-
-The server files mount is optional, but if the server is expected to be started and stopped serveral times, this volume will insure that Steam CMD doesn't constantly have to redownload Valheim every single time the container starts up.
-
-### Security
+Persistant data like admins, bans, map are stored in a volume.  By default Dockerfile creates this unnamed volume.  With docker-compose this volume can be changed to a bindmount.
 
 ## Usage
 
@@ -46,7 +42,7 @@ The docker-compose.yaml is included. Use `docker-compose up -d` to bring up the 
 ```bash
 docker run -it --rm \
     --name valheim-server \
-    --env SERVER_NAME="My server" \
+    --env SERVER_NAME="myServer" \
     --env SERVER_PASSWORD="secret" \
     --env SERVER_PORT=2456 \
     --env SERVER_WORLD=Dedicated \

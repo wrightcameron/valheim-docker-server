@@ -1,5 +1,4 @@
 #!/bin/bash
-${STEAMCMDDIR}/steamcmd.sh +login anonymous +force_install_dir $STEAMAPPDIR/valheimServer +app_update $STEAMAPPID +quit
 
 # valheim_server.x86_64 likes to start in same directory it's located in
 cd ${STEAMAPPDIR}/valheimServer

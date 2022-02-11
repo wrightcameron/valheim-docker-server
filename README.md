@@ -4,7 +4,7 @@ Dedicated server for [Valheim](https://store.steampowered.com/app/892970/Valheim
 
 ## About
 
-Dedicated Docker image for video game Valheim.  Valheim Plus is added for additional server configeratin, so players will need to download Valheim Plus client.  This image is self contained, with everything needed to standup a Valheim headless dedicated server.
+Dedicated Docker image for video game Valheim.  Valheim Plus is added for additional server configuration, so players will need to download Valheim Plus client.  This image is self contained, with everything needed to stand up a Valheim headless dedicated server.
 
 The base image this was built upon is a docker image containing just the steam CMD.  Resulting in a very minimal amount of code needed to setup Valheim.
 
@@ -29,7 +29,7 @@ The network port is set in the Docker compose file or in the Docker command from
 
 ## Volume
 
-Persistant data like admins, bans, map are stored in a volume.  By default Dockerfile creates this unnamed volume.  With docker-compose this volume can be changed to a bindmount.
+Persistent data like admins, bans, map are stored in a volume.  By default Dockerfile creates this unnamed volume.  With docker-compose this volume can be changed to a bind mount.
 
 ## Usage
 
@@ -53,7 +53,7 @@ docker run -it --rm \
 
 While running Docker Compose or Docker CLI interactively (not `-d` mode), you can simply press `CTRL+C` once to gracefully stop the server.
 
-## Shoutouts
+## Shout-outs
 
 These people and resources helped me get this working.
 
